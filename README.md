@@ -1,4 +1,4 @@
-# Belly-Button-Challenge [(Click Here to view Dashboard}](https://jbrodrick11.github.io/belly-button-challenge/)
+# Belly-Button-Challenge [(Click Here to view Dashboard)](https://jbrodrick11.github.io/belly-button-challenge/)
 
 ---
 
