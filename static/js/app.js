@@ -40,9 +40,7 @@ d3.json(url).then(function (data) {
     let sortedData = filteredData.sort(
       (a, b) => b.sample_values - a.sample_values
     );
-    // let slicedData = sortedData.slice(0, 10);
-    // let reversedData = slicedData.reverse();
-
+    
     // Assign variables to hold bar axis data
     let barsample_data = sortedData
       .map((row) => row.sample_values)[0]
