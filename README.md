@@ -1,16 +1,22 @@
-# [Belly-Button-Challenge 
-(Click Here to view Dashboard)](https://jbrodrick11.github.io/belly-button-challenge/)
+# Belly-Button-Challenge [(Click Here to view Dashboard}](https://jbrodrick11.github.io/belly-button-challenge/)
+
 ---
+
 ## Summary
 
-This assignment involves building an interactive dashboard using the D3 library to explore the **Belly Button Biodiversity dataset**. 
+This assignment involves building an interactive dashboard using the D3 library to explore the Belly Button Biodiversity dataset. 
+
 ---
+
 ## Required Dependancies
 
 N/A - All required libraries are referenced in the index.html file to ensure the dash loads correctly. These include;
--the D3 library  (<script src="https://d3js.org/d3.v5.min.js"></script>)
--the Plotly library ( <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>)
+
+  - the D3 library  (<script src="https://d3js.org/d3.v5.min.js"></script>)
+  - the Plotly library ( <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>)
+
 ---
+
 ## Working Notes
 
 This particulaer assignment was incredibly challenging. Being asked to *'create'* from scratch using a reletively new language was indeed a challenge - however, I was able to utilise what we'd learnt to complete this assignment.
@@ -21,16 +27,20 @@ The dash will load with the first value in the dropdown selected by default - fr
 
 By selecting a value in the dropdown, the following will happen;
 
--The panel will update with the values the updated metadata
--The bar chart will update with the top 10 OTUs found for that id
--The bubble chart will update with each sample for that id. 
+  - The panel will update with the values the updated metadata
+  - The bar chart will update with the top 10 OTUs found for that id
+  - The bubble chart will update with each sample for that id. 
 
 ![Belly Button Biodiversity Dashboard](Additions/dashboard.png)
+
 ---
+
 ## Bonus
 
 I did not attempt the bonus this week.
+
 ---
+
 ## Criteria
 
 The marking criteria reads as follows;
@@ -54,7 +64,9 @@ The marking criteria reads as follows;
 - [x] Metadata initialises without error (10 points)
 - [x] Metadata updates when a new sample is selected (10 points)
 - [x] App Successfully Deployed to Github Pages (10 points)
+
 ---
+
 ## Other Comments
 
 There was multiple versions of the app.js file initially, however this was condensed (locally) to remove redundancies. This task really allowed me to confirm my understanding of functions more than anything. I think as a general remark, understanding functions is key to optimising code. While I still feel inexperienced with javascript, I was able to utilise my fundimenatals to complete this task. 
