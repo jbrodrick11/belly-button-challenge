@@ -1,56 +1,68 @@
+// Assign URL to Variable
 const url =
   "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json";
 
-let names;
-let jsonData;
-
 // Fetch the JSON data and assign it to variables
 d3.json(url).then(function (data) {
-  names = data.names;
-  jsonData = data.samples;
+  let jsonNames = data.names;
+  let jsonSample = data.samples;
+  let dropdownMenu = d3.select("#selDataset");
 
   //Create Dropdown Menu from the Names array
-  let dropdownMenu = d3.select("#selDataset");
-  data.names.forEach((name) => {
-    dropdownMenu.append("option").text(name).property("value", name);
-  });
+  jsonNames.forEach((name) =>
+    dropdownMenu.append("option").text(name).property("value", name)
+  );
 
+  // Create Function to select item from dropdown menu
+  function optionChanged() {
+    let sample = d3.select("#selDataset").property("value");
+    updateAllData(sample);
+  }
+
+  //Allow Dropdown Menu to update items on dashboard
   d3.select("#selDataset").on("change", optionChanged);
 
-  //Select Corresponding Data from the dropdown menu
-  function updateData(sample) {
-    let variable = d3.select("#selDataset").property("value");
-
+  //Create Function to update each visual on the dashboard
+  function updateAllData(sample) {
+    let jsonValue = d3.select("#selDataset").property("value");
     let metadata = data.metadata.filter(
       (meta) => meta.id.toString() === sample
     )[0];
-    console.log(metadata);
 
-    //Add metadata key and value to the panel
-    let panel = d3.select("#sample-metadata");
-    panel.html("");
+    //Update the Metadata Panel with the selected key and value
+    let panel = d3.select("#sample-metadata").html("");
     Object.entries(metadata).forEach(([key, value]) => {
       panel.append("h6").text(`${key}: ${value}`);
     });
 
-    let filteredData = jsonData.filter((sample) => sample.id === variable);
+    // Transform Initial json Data
+    let filteredData = jsonSample.filter((sample) => sample.id === jsonValue);
     let sortedData = filteredData.sort(
       (a, b) => b.sample_values - a.sample_values
     );
-    let slicedData = sortedData.slice(0, 10);
-    let reversedData = slicedData.reverse();
-
-    console.log(reversedData);
+    // let slicedData = sortedData.slice(0, 10);
+    // let reversedData = slicedData.reverse();
 
     // Assign variables to hold bar axis data
-    let barsample_data = reversedData.map((row) => row.sample_values)[0].slice(0, 10);
-    let barotu_data = reversedData.map((row) =>  row.otu_ids)[0].slice(0, 10);
-    let barotu_label_data = reversedData.map((row) => row.otu_labels)[0].slice(0, 10);
-    let yticks = barotu_data.slice(0,10).map(otuid => `OTU ${otuid}`).reverse()
-    
-    const trace1data = barsample_data.sort((a,b) => a-b)
+    let barsample_data = sortedData
+      .map((row) => row.sample_values)[0]
+      .slice(0, 10);
+    let barotu_data = sortedData.map((row) => row.otu_ids)[0].slice(0, 10);
+    let barotu_label_data = sortedData
+      .map((row) => row.otu_labels)[0]
+      .slice(0, 10);
+    let yticks = barotu_data
+      .slice(0, 10)
+      .map((otuid) => `OTU ${otuid}`)
+      .reverse();
+    const trace1data = barsample_data.sort((a, b) => a - b);
 
-    // Update Bar Chart
+    // Assign variables to hold bubble axis data
+    let bubblesample_data = sortedData.map((row) => row.sample_values)[0];
+    let bubbleotu_data = sortedData.map((row) => row.otu_ids)[0];
+    let bubbleotu_label_data = sortedData.map((row) => row.otu_labels)[0];
+
+    // Create Bar Chart with Selected Data
     let trace1 = [
       {
         x: trace1data,
@@ -61,15 +73,10 @@ d3.json(url).then(function (data) {
       },
     ];
 
-
+    // Draw Updated Bar Chart
     Plotly.newPlot("bar", trace1);
 
-    // Assign variables to hold bubble axis data
-    let bubblesample_data = reversedData.map((row) => row.sample_values)[0];
-    let bubbleotu_data = reversedData.map((row) =>  row.otu_ids)[0];
-    let bubbleotu_label_data = reversedData.map((row) => row.otu_labels)[0];
-    
-    // Update Bubble Chart
+    // Create Bubble Chart with Selected Data
     let trace2 = [
       {
         x: bubbleotu_data,
@@ -83,23 +90,12 @@ d3.json(url).then(function (data) {
         },
       },
     ];
+    let layout = { xaxis: { title: "OTU ID" } };
 
-    let layout = {
-      xaxis : {
-        title: "OTU ID"
-      }
-    }
-
+    // Draw Updated Bubble Chart
     Plotly.newPlot("bubble", trace2, layout);
   }
 
-  // Update the value based on the dropdown menu
-  function optionChanged() {
-    let sample = d3.select("#selDataset").property("value");
-
-    updateData(sample);
-  }
-
-  // Call updateData with the default sample
-  updateData(names[0]);
+  // Use UpdateAllData Function to set default values as page loads
+  updateAllData(jsonNames[0]);
 });
