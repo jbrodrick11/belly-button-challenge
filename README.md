@@ -1,4 +1,4 @@
-# ![belly-button-challenge](https://jbrodrick11.github.io/belly-button-challenge/)
+# [Belly-Button-Challenge (Click HerE)](https://jbrodrick11.github.io/belly-button-challenge/)
 ---
 ## Summary
 
