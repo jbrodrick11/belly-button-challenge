@@ -12,8 +12,8 @@ This assignment involves building an interactive dashboard using the D3 library 
 
 N/A - All required libraries are referenced in the index.html file to ensure the dash loads correctly. These include;
 
-  - the D3 library  (<script src="https://d3js.org/d3.v5.min.js"></script>)
-  - the Plotly library ( <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>)
+  - the D3 library  ("https://d3js.org/d3.v5.min.js")
+  - the Plotly library ("https://cdn.plot.ly/plotly-latest.min.js")
 
 ---
 
