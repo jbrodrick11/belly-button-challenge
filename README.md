@@ -21,7 +21,7 @@ N/A - All required libraries are referenced in the index.html file to ensure the
 
 This particulaer assignment was incredibly challenging. Being asked to *'create'* from scratch using a reletively new language was indeed a challenge - however, I was able to utilise what we'd learnt to complete this assignment.
 
-The app.js file utilises a few functions to extract, transform and load the data into the dash correctly. I found that I was able to minimise my use of functions by nesting a large portion of the code under one function to save having to load in the data several times throughout the file.
+The **[app.js file](https://github.com/jbrodrick11/belly-button-challenge/blob/main/static/js/app.js)** utilises a few functions to extract, transform and load the data into the dash correctly. I found that I was able to minimise my use of functions by nesting a large portion of the code under one function to save having to load in the data several times throughout the file.
 
 The dash will load with the first value in the dropdown selected by default - from here the dropdown menu will allow you to. navigate through the different id's to update the data on the dashboard. 
 
@@ -68,6 +68,8 @@ The marking criteria reads as follows;
 ---
 
 ## Other Comments
+
+The starter index.html file listed a function optionChanged that suggested we refernce it within our app.js file. However, for my own ability to comprehend what was happening, i moved the creation of this function out of the index.html file and directly into the app.js file (as we'd previously done with exercies in class)
 
 There was multiple versions of the app.js file initially, however this was condensed (locally) to remove redundancies. This task really allowed me to confirm my understanding of functions more than anything. I think as a general remark, understanding functions is key to optimising code. While I still feel inexperienced with javascript, I was able to utilise my fundimenatals to complete this task. 
 
